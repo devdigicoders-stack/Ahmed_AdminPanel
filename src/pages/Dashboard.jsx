@@ -250,7 +250,7 @@ export default function Dashboard() {
       submittedOn: "تاريخ التقديم:",
       close: "إغلاق",
       saveChanges: "حفظ التعديلات",
-      websiteLink: "زيارة الموقع"
+      // websiteLink: "زيارة الموقع"
     }
   }[lang];
 
@@ -340,14 +340,7 @@ export default function Dashboard() {
           </button>
 
           {/* Website Link */}
-          <a
-            href={import.meta.env.VITE_WEBSITE_URL || 'http://localhost:5173'}
-            target="_blank"
-            rel="noreferrer"
-            className="px-3.5 py-2 rounded-xl bg-[#FAF8F5] border border-[#D5C7B3] hover:border-[#5B132B] text-xs font-bold text-[#380C1B] transition-all"
-          >
-            {labels.websiteLink}
-          </a>
+        
 
           {/* Logout Button */}
           <button
