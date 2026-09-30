@@ -1,19 +1,20 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
-import { 
-  fetchAdminEnquiries, 
-  updateEnquiryStatusApi, 
+import logo from '../assets/Ahmed For Facility Servies Logo.png';
+import {
+  fetchAdminEnquiries,
+  updateEnquiryStatusApi,
   deleteEnquiryApi,
   updateAdminProfileApi,
   changeAdminPasswordApi
 } from '../services/api';
-import { 
-  Search, 
-  Trash2, 
-  Phone, 
-  Globe, 
-  ShieldCheck, 
+import {
+  Search,
+  Trash2,
+  Phone,
+  Globe,
+  ShieldCheck,
   RefreshCw,
   LogOut,
   Eye,
@@ -32,7 +33,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 export default function Dashboard() {
   const { user, token, logout, updateUser } = useAuth();
   const { lang, toggleLanguage, isRTL } = useLanguage();
-  
+
   const [enquiries, setEnquiries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
@@ -170,7 +171,7 @@ export default function Dashboard() {
     return enquiries.filter(enq => {
       const matchStatus = statusFilter === 'all' || enq.status === statusFilter;
       const matchService = serviceFilter === 'all' || enq.serviceRequired === serviceFilter;
-      const matchSearch = searchQuery === '' || 
+      const matchSearch = searchQuery === '' ||
         (enq.fullName && enq.fullName.toLowerCase().includes(searchQuery.toLowerCase())) ||
         (enq.mobileNumber && enq.mobileNumber.includes(searchQuery)) ||
         (enq.id && enq.id.toLowerCase().includes(searchQuery.toLowerCase())) ||
@@ -270,33 +271,35 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-[#F7F3EB] py-6 px-4 sm:px-6 lg:px-8 space-y-6">
-      
+
       {/* Top Header Bar */}
       <div className="max-w-7xl mx-auto bg-white rounded-3xl p-5 sm:p-7 border border-[#E5DBCE] shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        
+
         {/* Brand & Subtitle */}
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#5B132B] to-[#380C1B] text-[#C5A059] flex items-center justify-center font-bold text-xl shadow-md border border-[#C5A059]/30">
-            <ShieldCheck size={26} />
-          </div>
+        <div className="flex items-center gap-3.5 sm:gap-4">
+          <img
+            src={logo}
+            alt="Ahmed for Facility Services"
+            className="w-14 h-14 sm:w-16 sm:h-16 object-contain flex-shrink-0"
+          />
           <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-xl sm:text-2xl font-extrabold text-[#380C1B]">
-                {labels.portalTitle}
+            <div className="flex flex-wrap items-center gap-2">
+              <h1 className="text-xl sm:text-2xl font-black text-[#380C1B] tracking-tight">
+                Ahmed for Facility Services
               </h1>
               <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#5B132B]/10 text-[#5B132B] uppercase">
-                Enquiries Only
+                {lang === 'en' ? 'Admin Portal' : 'لوحة الإدارة'}
               </span>
             </div>
-            <p className="text-xs text-[#665E5E] mt-0.5">
-              {labels.portalSub}
+            <p className="text-xs font-medium text-[#665E5E] mt-0.5">
+              {labels.portalTitle} • {labels.portalSub}
             </p>
           </div>
         </div>
 
         {/* Action Controls */}
         <div className="flex flex-wrap items-center gap-2">
-          
+
           {/* My Profile Button */}
           <button
             onClick={() => {
@@ -340,7 +343,7 @@ export default function Dashboard() {
           </button>
 
           {/* Website Link */}
-        
+
 
           {/* Logout Button */}
           <button
@@ -380,7 +383,7 @@ export default function Dashboard() {
       {/* Filter & Search Bar */}
       <div className="max-w-7xl mx-auto p-5 rounded-3xl bg-white border border-[#E5DBCE] shadow-md space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
-          
+
           {/* Search Input */}
           <div className="md:col-span-6 relative">
             <Search size={16} className={`absolute top-1/2 -translate-y-1/2 ${isRTL ? 'right-4' : 'left-4'} text-[#8A8181]`} />

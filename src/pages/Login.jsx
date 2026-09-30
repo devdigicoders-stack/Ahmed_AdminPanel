@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
 import { ShieldCheck, Lock, Mail, Globe, ArrowRight, Loader2 } from 'lucide-react';
+import logo from '../assets/Ahmed For Facility Servies Logo.png';
 
 export default function Login() {
   const { login } = useAuth();
@@ -47,7 +48,7 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-[#F7F3EB] flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 py-12 relative overflow-hidden">
-      
+
       {/* Background Ornaments */}
       <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#5B132B]/5 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-[#C5A059]/10 blur-3xl pointer-events-none" />
@@ -64,12 +65,14 @@ export default function Login() {
       </div>
 
       <div className="max-w-md w-full bg-white rounded-3xl p-8 sm:p-10 border border-[#E5DBCE] shadow-xl relative z-10 space-y-6">
-        
+
         {/* Header Branding */}
         <div className="text-center space-y-2">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#5B132B] to-[#380C1B] text-[#C5A059] mx-auto flex items-center justify-center font-bold shadow-lg border border-[#C5A059]/30">
-            <ShieldCheck size={36} />
-          </div>
+          <img
+            src={logo}
+            alt="Ahmed for Facility Services"
+            className="w-20 h-20 object-contain mx-auto"
+          />
           <h2 className="text-2xl font-extrabold text-[#380C1B] tracking-tight pt-2">
             {t.title}
           </h2>
